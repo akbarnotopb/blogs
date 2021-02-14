@@ -1,0 +1,15 @@
+.body__component{
+    background-color: white;
+    width: calc(100vw - 350px);
+    margin-left: 320px;
+    box-sizing: border-box;
+    margin-top: 40px;
+    padding: 20px;
+    z-index: -1;
+    position: absolute;
+}
+
+.body__component > p > img{
+    width: 100%;
+    display: block;
+}

@@ -1,0 +1,34 @@
+.header__container{
+    position:fixed;
+    top:0;
+    width: 100%;
+    height: 40px;
+    padding-left: 40px;
+    background-color: white;
+}
+
+.header__name{
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    color: #013880;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    /* text-shadow: 2px 2px #eaeaea; */
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .header__container{
+        padding-left: 0px;
+        text-align: center;
+    }
+}
+  
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .header__container{
+        padding-left: 0px;
+        text-align: center;
+    }
+}

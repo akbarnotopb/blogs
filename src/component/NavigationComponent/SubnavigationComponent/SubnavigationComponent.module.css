@@ -1,0 +1,9 @@
+.subnavigation{
+    padding:5px 0px 5px 25px;
+    cursor: pointer;
+}
+
+.subnavigation:hover{
+    background-color: white;
+    color: #013880;
+}

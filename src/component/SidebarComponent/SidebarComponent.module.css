@@ -1,0 +1,68 @@
+.navbar__profpic__container{
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 5px solid white;
+    display: inline-block;
+}
+
+.navbar__profile__description__container{
+    text-align: center;
+    color: white;
+}
+
+.navbar__profile__description__container p{
+    margin: 0;
+}
+
+.navbar__container{
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    /* margin-top:40px; */
+    padding:20px;
+    background-color: white;
+    /* position: absolute; */
+    position: fixed;
+    box-sizing: border-box;
+    z-index: -1;
+    background-color: #013880;
+}
+
+.navigation__component__container{
+    height: calc(100vh - 350px);
+    overflow-y: scroll;
+}
+
+
+
+.navigation__component__container::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+}
+   
+/* Handle */
+.navigation__component__container::-webkit-scrollbar-thumb {
+    background: white; 
+}
+  
+/* Handle on hover */
+.navigation__component__container::-webkit-scrollbar-thumb:hover {
+    background: white; 
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .navbar__container{
+        display: none;
+    }
+
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .navbar__container{
+        display: none;
+    }
+}

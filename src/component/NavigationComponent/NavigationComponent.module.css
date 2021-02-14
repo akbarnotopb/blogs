@@ -1,0 +1,16 @@
+.navigation__container{
+    color: white;
+    list-style: none;
+}
+
+.navigation > span{
+    display: block;
+    padding:5px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navigation >span:hover{
+    background-color: white;
+    color: #013880;
+}
