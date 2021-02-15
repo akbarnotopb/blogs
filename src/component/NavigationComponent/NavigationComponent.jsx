@@ -14,17 +14,9 @@ class NavigationComponent extends React.Component{
     }
 
     toggleThisNavbar = ()=>{
-        // if(this.props.details.subnav.length !== 0){
-        //     if(payload === false){
         this.setState({
             open : !this.state.open
         })
-        //     }else{
-        //         this.props.toggleNavigation(payload)
-        //     }
-        // }else{
-        //     this.props.toggleNavigation(this.props.details.url)
-        // }
     }
 
     render(){

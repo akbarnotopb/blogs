@@ -17,8 +17,6 @@ class BodyComponent extends React.Component{
     }
     
     render(){
-
-        console.log(this.state)
         const routeComponent = []
         let counter = 0
         ROUTE.forEach(element=>{
