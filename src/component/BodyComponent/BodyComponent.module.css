@@ -13,3 +13,20 @@
     width: 100%;
     display: block;
 }
+
+
+@media (max-height: 600px) and (orientation: landscape) {
+    .body__component{
+        width: calc(100vw - 40px);
+        margin-left:  20px;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .body__component{
+        width: calc(100vw - 40px);
+        margin-left:  20px;
+    }
+}

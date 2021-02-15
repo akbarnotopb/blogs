@@ -3,14 +3,18 @@ import styles from "./SidebarComponent.module.css"
 import profpic from "../../images/myfoto.jpg"
 import NavigationComponent from "../NavigationComponent/NavigationComponent.jsx"
 
-class SidebarComponent extends React.Component{
+import { useSelector, useDispatch } from "react-redux"
+import { ToggleNavbar } from "../../action/navbartoggle.js"
 
+function SidebarComponent(){
+        const toggle    = useSelector(state => state.navbarToggled) 
+        const dispatch  = useDispatch()
 
-    render(){
-
-        console.log(process.env.PUBLIC_URL)
         return (
-            <nav className={styles.navbar__container}>
+            <nav className={`${styles.navbar__container} ` + ((toggle===true)?styles.navbar__container__small:'')}>
+                {
+                    (toggle)?<span onClick={()=>dispatch(ToggleNavbar())} className={"fa fa-close "+ styles.navbar__container__small__close}></span>:""
+                }
                 <div>
                     <div style={{ textAlign:"center" }}>
                         <figure className={styles.navbar__profpic__container}>
@@ -56,6 +60,5 @@ class SidebarComponent extends React.Component{
         )
     }
 
-}
 
 export default SidebarComponent

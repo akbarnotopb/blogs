@@ -4,14 +4,24 @@
     width: 100%;
     height: 40px;
     padding-left: 40px;
-    background-color: white;
+    padding-right: 20px;
+    background-color: #013880;
+    display: none;
+}
+
+.header__toggle{
+    height: 40px;
+    display: inline-block;
+    color: white;
+    line-height: 40px;
+    float: right;
 }
 
 .header__name{
     height: 40px;
     display: inline-block;
     line-height: 40px;
-    color: #013880;
+    color: white;
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
@@ -20,15 +30,16 @@
 
 @media (max-height: 600px) and (orientation: landscape) {
     .header__container{
-        padding-left: 0px;
-        text-align: center;
+        padding-left: 25px;
+        display: initial;
     }
 }
   
   /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .header__container{
-        padding-left: 0px;
-        text-align: center;
+        padding-left: 25px;
+        display: initial;
+
     }
 }

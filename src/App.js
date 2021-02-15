@@ -4,25 +4,16 @@ import HeaderComponent from "./component/HeaderComponent/HeaderComponent.jsx"
 import SidebarComponent from "./component/SidebarComponent/SidebarComponent.jsx"
 import BodyComponent from "./component/BodyComponent/BodyComponent.jsx"
 
+import { useSelector } from "react-redux"
 
-class App extends React.Component{
-
-  constructor(props){
-    super(props)
-    this.state = {
-      loading : false
-    }
-  }
-
-  render(){
-      return (
-        <div className="App">
-          {/* <HeaderComponent/> */}
+function App(){  
+  return (
+    <div className="App">
+          <HeaderComponent/>
           <SidebarComponent/>
           <BodyComponent/>
         </div>
     );
-  }
 }
 
 export default App;

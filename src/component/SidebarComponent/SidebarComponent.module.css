@@ -35,8 +35,6 @@
     overflow-y: scroll;
 }
 
-
-
 .navigation__component__container::-webkit-scrollbar {
     width: 5px;
     height: 2px;
@@ -52,11 +50,22 @@
     background: white; 
 }
 
+.navbar__container__small__close{
+    color: white;
+    float: right;
+}
+
 @media (max-height: 600px) and (orientation: landscape) {
     .navbar__container{
         display: none;
     }
 
+    .navbar__container__small{
+        display:initial;
+        width: 100vw;
+        position: fixed;
+        z-index: 10000;
+    }
 }
 
 
@@ -64,5 +73,12 @@
 @media only screen and (max-width: 600px) {
     .navbar__container{
         display: none;
+    }
+
+    .navbar__container__small{
+        display:initial;
+        width: 100vw;
+        position: fixed;
+        z-index: 10000;
     }
 }
