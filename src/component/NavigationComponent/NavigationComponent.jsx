@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import styles from "./NavigationComponent.module.css"
 
 import SubnavigationComponent from "./SubnavigationComponent/SubnavigationComponent.jsx"
@@ -13,21 +14,43 @@ class NavigationComponent extends React.Component{
     }
 
     toggleThisNavbar = ()=>{
+        // if(this.props.details.subnav.length !== 0){
+        //     if(payload === false){
         this.setState({
             open : !this.state.open
         })
+        //     }else{
+        //         this.props.toggleNavigation(payload)
+        //     }
+        // }else{
+        //     this.props.toggleNavigation(this.props.details.url)
+        // }
     }
 
     render(){
+        const Subnavigations = []
+
+        let counter = 0
+        this.props.details.subnav.forEach(element => {
+            const route = process.env.PUBLIC_URL+this.props.details.url + element.url
+            Subnavigations.push(<SubnavigationComponent key={counter++} details={element} url={route} />)
+        })
+
         return (
             <li className={`${styles.navigation__container} ${styles.navigation} disable-hightlight`}>
-                <span onClick={this.toggleThisNavbar}>
-                    <span className={"fa "+ ((this.state.open === true)? " fa-angle-down":" fa-angle-double-right")}></span> Hackerrank (48)
-                </span>
+                {(this.props.details.subnav.length)!==0?
+                    <span onClick={this.toggleThisNavbar}>
+                        <span className={"fa "+ ((this.state.open === true)? " fa-angle-down":" fa-angle-double-right")}></span> {this.props.details.title} {(this.props.details.subnav.length !== 0)? `(${this.props.details.subnav.length})`:""}
+
+                    </span> 
+                    :
+                    <Link to={process.env.PUBLIC_URL+this.props.details.url}>
+                        <span className={"fa "+ ((this.state.open === true)? " fa-angle-down":" fa-angle-double-right")}></span> {this.props.details.title} {(this.props.details.subnav.length !== 0)? `(${this.props.details.subnav.length})`:""}
+                    </Link>
+                }
+
                 <ul style={{ listStyle:"none", padding:0, display:(this.state.open === false)?"none":"initial" }}>
-                    <SubnavigationComponent/>
-                    <SubnavigationComponent/>
-                    <SubnavigationComponent/>
+                    {Subnavigations}
                 </ul>
             </li>
         )

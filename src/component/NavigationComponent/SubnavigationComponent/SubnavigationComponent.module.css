@@ -3,6 +3,15 @@
     cursor: pointer;
 }
 
+.subnavigation > a {
+    color:white;
+}
+
+.subnavigation > a:hover {
+    background-color: white;
+    color: #013880;
+}
+
 .subnavigation:hover{
     background-color: white;
     color: #013880;

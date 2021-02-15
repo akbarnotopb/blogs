@@ -5,10 +5,24 @@ import NavigationComponent from "../NavigationComponent/NavigationComponent.jsx"
 
 import { useSelector, useDispatch } from "react-redux"
 import { ToggleNavbar } from "../../action/navbartoggle.js"
+import { NavigationToggle } from "../../action/navigationtoggle.js"
+
+import { ROUTE } from "../../routes.js"
+
 
 function SidebarComponent(){
-        const toggle    = useSelector(state => state.navbarToggled) 
+        const toggle        = useSelector(state => state.navbarToggled)
+
+        
+        const navigations_component = []
         const dispatch  = useDispatch()
+
+        let counter         = 0
+        ROUTE.forEach(element => {
+            navigations_component.push(
+                <NavigationComponent key={counter++} details={element} toggleNavigation={(payload)=>{dispatch(NavigationToggle(payload)); }}/>
+            )
+        })
 
         return (
             <nav className={`${styles.navbar__container} ` + ((toggle===true)?styles.navbar__container__small:'')}>
@@ -41,20 +55,7 @@ function SidebarComponent(){
                     </div>
                 </div>
                 <div className={styles.navigation__component__container}>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
-                    <NavigationComponent/>
+                    {navigations_component}
                 </div>
             </nav>
         )

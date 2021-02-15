@@ -3,11 +3,25 @@
     list-style: none;
 }
 
+.navigation > a{
+    display: block;
+    padding:5px 0;
+    font-weight: bold;
+    cursor: pointer;
+    color:white;
+}
+
+.navigation >a:hover{
+    background-color: white;
+    color: #013880;
+}
+
 .navigation > span{
     display: block;
     padding:5px 0;
     font-weight: bold;
     cursor: pointer;
+    color:white;
 }
 
 .navigation >span:hover{

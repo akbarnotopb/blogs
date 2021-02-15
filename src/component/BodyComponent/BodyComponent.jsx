@@ -1,38 +1,53 @@
 import React from "react"
-import styles from "./BodyComponent.module.css"
-import ReactMarkdown from 'react-markdown'
+import ArticleComponent from "../ArticleComponent/ArticleComponent.jsx"
 
+import {
+    Switch,
+    Route,
+  } from "react-router-dom";
+  import {ROUTE} from "../../routes.js"
+  
 class BodyComponent extends React.Component{
-
     constructor(props){
         super(props)
         this.state = {
-            loading : true,
-            text    : ""
+            redirect  : null,
+            subscribe : null,
         }
     }
+    
+    render(){
 
-    componentDidMount(){
-        const request = new XMLHttpRequest()
-        request.onreadystatechange = (result) => {
-            if(result.target.status){
-                this.setState({
-                    text : result.target.responseText.split("https://github.com").join("https://raw.githubusercontent.com").split("/blob/").join("/")
+        console.log(this.state)
+        const routeComponent = []
+        let counter = 0
+        ROUTE.forEach(element=>{
+            if(element.subnav.length === 0){
+                const route = process.env.PUBLIC_URL+element.url
+                routeComponent.push(
+                <Route key={counter++} exact path={route}>
+                    <ArticleComponent article={element.api}/>
+                </Route>
+                )
+            }
+            else{
+                element.subnav.forEach(subnav => {
+                const route = process.env.PUBLIC_URL+element.url+subnav.url
+                routeComponent.push(
+                    <Route  key={counter++} exact path={route}>
+                    <ArticleComponent article={element.api} />
+                    </Route>
+                )
                 })
             }
-        }
-        request.open("GET","https://raw.githubusercontent.com/akbarnotopb/portofolio/main/Data%20Science/EDA/Covid%20Vaccinations%20EDA%20-%206%20Feb%202021.md")
-        request.send()
-    }
+        })
 
-    render(){
-        return (
-            <article className={styles.body__component}>
-                <ReactMarkdown children={this.state.text} />
-            </article>
+        return(
+            <Switch>
+                {routeComponent}
+            </Switch>
         )
     }
-
 }
 
 export default BodyComponent
