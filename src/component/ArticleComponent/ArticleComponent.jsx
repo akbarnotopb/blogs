@@ -1,6 +1,7 @@
 import React from "react"
 import styles from "./ArticleComponent.module.css"
 import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
 
 class ArticleComponent extends React.Component{
 
@@ -28,7 +29,7 @@ class ArticleComponent extends React.Component{
     render(){
         return (
             <article className={styles.body__component}>
-                <ReactMarkdown children={this.state.text} />
+                <ReactMarkdown plugins={[ gfm ]} children={this.state.text} />
             </article>
         )
     }
