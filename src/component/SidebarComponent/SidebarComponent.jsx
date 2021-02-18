@@ -5,7 +5,7 @@ import NavigationComponent from "../NavigationComponent/NavigationComponent.jsx"
 
 import { useSelector, useDispatch } from "react-redux"
 import { ToggleNavbar } from "../../action/navbartoggle.js"
-
+import { NavigationTogle } from "../../action/navigationtoggle.js"
 import { ROUTE } from "../../routes.js"
 
 
@@ -19,7 +19,7 @@ function SidebarComponent(){
         let counter         = 0
         ROUTE.forEach(element => {
             navigations_component.push(
-                <NavigationComponent key={counter++} details={element} />
+                <NavigationComponent key={counter++} details={element} dispatch={(toggledNavigation) => {dispatch(NavigationTogle(toggledNavigation))}} />
             )
         })
 

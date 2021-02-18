@@ -3,14 +3,10 @@
     cursor: pointer;
 }
 
-.subnavigation > a {
-    color:white;
-}
-
 .subnavigation:hover{
     background-color: white;
 }
 
-.subnavigation:hover a{
+.subnavigation:hover span{
     color: #013880;
 }
