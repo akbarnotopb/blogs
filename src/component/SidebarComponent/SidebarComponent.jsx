@@ -3,15 +3,15 @@ import styles from "./SidebarComponent.module.css"
 import profpic from "../../images/myfoto.jpg"
 import NavigationComponent from "../NavigationComponent/NavigationComponent.jsx"
 
-import { useSelector, useDispatch } from "react-redux"
-import { ToggleNavbar } from "../../action/navbartoggle.js"
-import { NavigationTogle } from "../../action/navigationtoggle.js"
 import { ROUTE } from "../../routes.js"
 
+import { ToggleNavbar } from "../../action/navbartoggle.js"
+import  {NavigationTogle } from "../../action/navigationtoggle.js"
+import { connect , useDispatch } from "react-redux"
 
-function SidebarComponent(){
-        const toggle        = useSelector(state => state.navbarToggled)
-
+function SidebarComponent(props){
+        const toggle        = props.navbarToggled
+        const navigation    = props.navigationToggled
         
         const navigations_component = []
         const dispatch  = useDispatch()
@@ -19,7 +19,7 @@ function SidebarComponent(){
         let counter         = 0
         ROUTE.forEach(element => {
             navigations_component.push(
-                <NavigationComponent key={counter++} details={element} dispatch={(toggledNavigation) => {dispatch(NavigationTogle(toggledNavigation))}} />
+                <NavigationComponent open={("/"+navigation.url.substr(1,navigation.url.element).split("/")[0]) === element.url} active={("/"+navigation.url.substr(1,navigation.url.element).split("/")[0]) === element.url && !navigation.subnav} key={counter++} details={element} dispatch={(toggledNavigation) => {dispatch(NavigationTogle(toggledNavigation))}} />
             )
         })
 
@@ -59,6 +59,9 @@ function SidebarComponent(){
             </nav>
         )
     }
+const mapStateToProps = (state) => {
+    return { navbarToggled       : state.navbarToggled, 
+             navigationToggled   : state.navigationToggled }
+}
 
-
-export default SidebarComponent
+export default connect(mapStateToProps)(SidebarComponent)

@@ -2,7 +2,6 @@
     color: white;
     list-style: none;
 }
-
 .navigation > a{
     display: block;
     padding:5px 0;
@@ -27,4 +26,9 @@
 .navigation >span:hover{
     background-color: white;
     color: #013880;
+}
+
+.navigation__active > span{
+    color:#013880!important;
+    background-color: white!important;
 }

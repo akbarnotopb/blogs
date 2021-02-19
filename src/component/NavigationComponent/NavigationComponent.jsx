@@ -8,7 +8,8 @@ class NavigationComponent extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            open : false,
+            open : this.props.open,
+            active : this.props.active,
         }
     }
 
@@ -18,6 +19,11 @@ class NavigationComponent extends React.Component{
                 open : !this.state.open
             })
         }else{
+
+            this.setState({
+                active : true,
+            })
+
             this.dispatchNavigation({
                 url : this.props.details.url,
                 api : this.props.details.api,
@@ -45,9 +51,9 @@ class NavigationComponent extends React.Component{
         })
 
         return (
-            <li className={`${styles.navigation__container} ${styles.navigation} disable-hightlight`}>
+            <li className={`${styles.navigation__container} ${styles.navigation} disable-hightlight ${(this.props.active)? styles.navigation__active :""}` }>
                 <span onClick={this.toggleThisNavbar}>
-                    <span className={"fa "+ ((this.state.open === true)? " fa-angle-down":" fa-angle-double-right")}></span> {this.props.details.title} {(this.props.details.subnav.length !== 0)? `(${this.props.details.subnav.length})`:""}
+                    <span className={"fa "+ ((this.state.open === true && this.props.details.subnav.length !== 0)? " fa-angle-down":" fa-angle-double-right")}></span> {this.props.details.title} {(this.props.details.subnav.length !== 0)? `(${this.props.details.subnav.length})`:""}
                 </span> 
                 <ul style={{ listStyle:"none", padding:0, display:(this.state.open === false)?"none":"initial" }}>
                     {Subnavigations}
